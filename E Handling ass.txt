@@ -1,0 +1,247 @@
+package Assignm2;
+
+
+/*1)Create abstract base class "Game" with 'play()' as abstract method.
+From that derive following classes.
+Football,Cricket,Tennis
+Create a class called as "GamesDemo" (public class)
+inside a main method create an array of "Game" (3 elements)
+Store objects of Football,Cricket and Tennis respectively.
+Now traverse the array and call that Cricket's play() method.*/
+
+abstract class Game1
+{ 
+	abstract void play();
+}
+
+class Cricket1 extends Game1
+{
+	public void play()
+	{
+		System.out.println("Playing Cricket");
+	}
+}
+
+class Football1 extends Game1
+{
+	public void play()
+	{
+		System.out.println("Playing Football");
+	}
+}
+
+class Tennis1 extends Game1
+{
+	public void play()
+	{
+		System.out.println("Playing Tennis");
+	}
+}
+
+
+
+public class Gamedemo 
+{
+
+	public static void main(String[] args)
+	{
+		Game1 arr[] = new Game1[3];
+		arr[0] = new Cricket1();
+		arr[1] = new Football1();
+		arr[2] = new Tennis1();
+		
+		for(int i=0; i<arr.length;i++)
+		{
+			arr[i].play();
+		}
+	}
+}
+
+========================================================================================================
+
+
+
+2) define your exception class by name "MyArithException"
+(MyArithException.java)
+define class "Calculator"   (Calculator.java)
+In this class define a function,which will accept an int and return double of it.
+e.g int caldouble(int)
+This function will check an int which is passed to it
+It will throw exception if 0 is passed or negative passed
+in case of 0 caller of this method should get error message
+"Zero not allowed" 
+in case of negative caller of this method should get error message
+"negative not allowed"
+In case of positive value it should simply return the double value.
+
+Now define class "MyCalcApp" (MyCalcApp.java)
+In this class you accept a number from user and pass that no. to
+caldouble() method which is mentioned above.
+
+package Ehandling;
+
+public class MyArithException extends Exception
+{
+	public MyArithException(String mess)
+	{
+		super(mess);
+	}
+}
+
+
+package Ehandling;
+
+public class Calculator
+{
+	public int caldouble(int k) throws MyArithException
+	{
+		if(k<=0)
+		{
+			throw new MyArithException("zero and negative not allowed");
+		}
+		return k*2;
+	}
+	
+}
+
+
+package Ehandling;
+
+import java.util.Scanner;
+
+public class MycalcApp 
+{
+
+	public static void main(String[] args)
+	{
+		int result = 0;
+		System.out.println("Enter number");
+		Scanner sc = new Scanner(System.in);
+		int k = sc.nextInt();
+		
+		Calculator c = new Calculator();
+		try
+		{
+			result= c.caldouble(k);
+		}
+		catch(MyArithException m)
+		{
+			System.out.println(m);
+		}
+		System.out.println(result);
+		System.out.println("Done");
+	}
+
+}
+
+
+========================================================================================================
+
+
+3)create a package called "course"
+In this package create three classes
+a) Dac    with methods  term1()  and term2()
+b) PreDac with  method  cet()
+c) Basic   with method  finalTest()
+
+Now write application called  "VitaApp" in which call all the methods  of the 
+above mentioned classes.
+
+package Course;
+
+public class Dac 
+{	int c=0;
+	public void Term1(int k)
+	{
+		c=k*k;
+		System.out.println("In Term1 :"+ c );
+	}
+	public void Term2()
+	{
+		System.out.println("In Term2");
+	}
+}
+
+
+package Course;
+
+public class Predac 
+{
+public void cet(String a)
+{
+	System.out.println("In Cet :" + a);
+}
+
+}
+
+package Course;
+
+public class Basic
+{
+	public void FinalTest()
+	{
+		System.out.println("In Final Test");	
+	}
+}
+
+
+package Course;
+
+public class VitaApp {
+
+	public static void main(String[] args)
+	{
+		Dac d = new Dac();
+		Predac p = new Predac();
+		Basic b = new Basic();
+		d.Term1(5);
+		d.Term2();
+		p.cet("kok");
+		b.FinalTest();
+	}
+
+}
+
+
+====================================================================================================
+
+/*4)define a class called as "Item" (Item.java)
+with members
+String itemid;
+String name;
+int cost;
+
+parameterized constructor which will accept above details at the time
+of creating object.
+	member function
+void display()
+which will display all the details of product
+create instances of this class and call the method display.*/
+
+class Item
+{
+		String name;
+		String itemid;
+		int cost;
+		
+		public Item(String name,String i,int cost)
+		{
+			this.name=name;
+			this.itemid=i;
+			this.cost=cost;
+		}
+		public void display()
+		{
+			System.out.println("Itemid: "+ itemid + " Name: "+ name + "  Cost: "+ cost  );
+		}
+}
+
+public class Product {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Item t1 = new Item("Facewash","001",500);
+		t1.display();
+	}
+}
